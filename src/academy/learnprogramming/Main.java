@@ -8,7 +8,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello, lets play a cool game called Hangman. \nTry to guess the word that Im currently thinking of. " +
+
+        Scanner input = new Scanner(System.in);
+        PlayHangMan();
+
+        while (true) {
+            System.out.println("Do you want to play again? (y or n)");
+            String response = input.nextLine().toLowerCase();
+            if (response.equals("y")) {
+                PlayHangMan();
+            } else {
+                break;
+            }
+        }
+
+
+    }
+
+
+    public static void PlayHangMan() {
+
+        System.out.println("Hello, lets play a game called Hangman. \nTry to guess the word that Im currently thinking of. " +
                 "\nYou get 4 guesses!");
         String board =
                 "H A N G M A N\n" +
@@ -24,11 +44,7 @@ public class Main {
                         "    ===";
 
         System.out.println(board);
-        PlayHangMan();
-    }
 
-
-    public static void PlayHangMan() {
 
         Scanner scan = new Scanner(System.in);
 
