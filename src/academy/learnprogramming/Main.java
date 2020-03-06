@@ -6,9 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Hello, lets play a cool game called Hangman. \nTry to guess the word that Im currently thinking of. " +
-                "\nYou get 7 guesses!");
+                "\nYou get 4 guesses!");
         String board =
                 "H A N G M A N\n" +
                         "\n" +
@@ -23,10 +22,83 @@ public class Main {
                         "    ===";
 
         System.out.println(board);
+        PlayHangMan();
+    }
 
-        System.out.println("Please guess a letter.");
-        //String input = scan.nextLine();
+
+    public static void PlayHangMan() {
+
+        Scanner scan = new Scanner(System.in);
+        String [] wordIncrement = new String [] {""};
+        String [] secretWord = new String []{"Cat"};
 
 
+        System.out.println("This word has " + secretWord.length + " letters. \nEnter a letter.");
+        int attempts = 4;
+
+
+        for (int i = 0; i <= secretWord.length; i++) {
+            String guess = scan.nextLine();
+            if (guess.equals("c")) {
+                System.out.println("Great Job!, this word has ONE C. \n C _ _ .");
+                attempts--;
+
+
+            } else if (guess.equals("a")) {
+                System.out.println("Great Job!, this word has ONE A. \n _ A _");
+                attempts--;
+            } else if (guess.equals("t")) {
+                System.out.println("Great Job!, this word has ONE T. \n _ _ T");
+                attempts--;
+
+            } else {
+
+                attempts--;
+                if (attempts == 3) {
+                    System.out.println("The letter you guessed is incorrect, you guessed the letter " + guess + ", you currently have " + attempts + " guesses left,  Please try again!");
+                    System.out.println(
+                            " +---+\n" +
+                                    "\n" +
+                                    "O   |\n" +
+                                    "\n" +
+                                    "      |\n" +
+                                    "\n" +
+                                    "      |\n" +
+                                    "\n" +
+                                    "    ===");
+                } else if (attempts == 2) {
+                    System.out.println("The letter you guessed is incorrect, you guessed the letter " + guess + ", you currently have " + attempts + " guesses left,  Please try again!");
+                    System.out.println(
+                            "+---+\n" +
+                                    "\n" +
+                                    "O   |\n" +
+                                    "\n" +
+                                    "|    |\n" +
+                                    "\n" +
+                                    "      |\n" +
+                                    "\n" +
+                                    "    ===");
+                } else if (attempts == 1) {
+                    System.out.println("The letter you guessed is incorrect, you guessed the letter " + guess + ", you currently have " + attempts + " guesses left,  Please try again!");
+                    System.out.println(
+                            "+---+\n" +
+                                    "\n" +
+                                    "O   |\n" +
+                                    "\n" +
+                                    "|    |\n" +
+                                    "\n" +
+                                    "|    |\n" +
+                                    "\n" +
+                                    "    ===");
+
+                } else if (attempts == 0) {
+                    System.out.println("The letter you guessed is incorrect, your guessed the letter " + guess + ", SORRY you ran out of tries!\n*******************GAME OVER ******************");
+                }
+
+
+            }
+
+
+        }
     }
 }
