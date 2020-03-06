@@ -1,5 +1,7 @@
 package academy.learnprogramming;
 
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -29,27 +31,35 @@ public class Main {
     public static void PlayHangMan() {
 
         Scanner scan = new Scanner(System.in);
-        String [] wordIncrement = new String [] {""};
-        String [] secretWord = new String []{"Cat"};
+
+        String[] secretWord = new String[]{"C", "A", "T"};
 
 
         System.out.println("This word has " + secretWord.length + " letters. \nEnter a letter.");
         int attempts = 4;
+        int rightGuesses = 0;
 
 
         for (int i = 0; i <= secretWord.length; i++) {
             String guess = scan.nextLine();
-            if (guess.equals("c")) {
+            if (rightGuesses == 3) {
+                System.out.println("Congratulations, you guessed the correct WORD." + Arrays.toString(secretWord));
+
+
+            } else if (guess.equals("c")) {
                 System.out.println("Great Job!, this word has ONE C. \n C _ _ .");
                 attempts--;
-
+                rightGuesses++;
 
             } else if (guess.equals("a")) {
                 System.out.println("Great Job!, this word has ONE A. \n _ A _");
                 attempts--;
+                rightGuesses++;
             } else if (guess.equals("t")) {
                 System.out.println("Great Job!, this word has ONE T. \n _ _ T");
                 attempts--;
+                rightGuesses++;
+
 
             } else {
 
@@ -61,9 +71,9 @@ public class Main {
                                     "\n" +
                                     "O   |\n" +
                                     "\n" +
-                                    "      |\n" +
+                                    "    |\n" +
                                     "\n" +
-                                    "      |\n" +
+                                    "    |\n" +
                                     "\n" +
                                     "    ===");
                 } else if (attempts == 2) {
